@@ -1,0 +1,9 @@
+export { default as Hero } from './Hero';
+export { default as Categories } from './Categories';
+export { default as FeaturedProducts } from './FeaturedProducts';
+export { default as HeroCarousel } from './HeroCarousel';
+export { default as BrandsShowcase } from './BrandsShowcase';
+export { default as Testimonials } from './Testimonials';
+export { default as BlogSection } from './BlogSection';
+export { default as CountdownTimer } from './CountdownTimer';
+// Exporte outros componentes aqui conforme forem criados
