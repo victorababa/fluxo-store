@@ -6,7 +6,7 @@
       "use": "@vercel/static-build",
       "config": { 
         "distDir": "dist",
-        "nodeVersion": "18.x"
+        "nodeVersion": "20.x"
       }
     }
   ],
@@ -16,7 +16,7 @@
   ],
   "build": {
     "env": {
-      "NODE_VERSION": "18.x"
+      "NODE_VERSION": "20.x"
     }
   }
 }
