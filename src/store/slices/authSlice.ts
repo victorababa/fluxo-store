@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { authService } from '../../services/authService';
 import { User, AuthState } from '../types';
 
@@ -71,11 +71,11 @@ const authSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
-    setCredentials: (state, action: PayloadAction<{ user: User; token: string }>) => {
+    setCredentials: (state, action: PayloadAction<{ user: User | null; token: string }>) => {
       const { user, token } = action.payload;
       state.user = user;
       state.token = token;
-      state.isAuthenticated = true;
+      state.isAuthenticated = !!token;
     },
   },
   extraReducers: (builder) => {
@@ -87,8 +87,9 @@ const authSlice = createSlice({
     builder.addCase(login.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isAuthenticated = true;
-      state.user = payload.user;
-      state.token = payload.token;
+      const authPayload = payload as { user: User; token: string };
+      state.user = authPayload.user;
+      state.token = authPayload.token;
     });
     builder.addCase(login.rejected, (state, { payload }) => {
       state.isLoading = false;

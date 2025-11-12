@@ -9,6 +9,7 @@ export interface Product {
   images?: string[];
   category: string;
   inStock: boolean;
+  color?: string;
   description?: string;
   specifications?: Array<{ name: string; value: string }>;
   features?: string[];

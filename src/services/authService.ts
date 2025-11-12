@@ -1,5 +1,26 @@
 import axios from 'axios';
 
+type AxiosResponse<T = any> = {
+  data: T;
+  status: number;
+  statusText: string;
+  headers: any;
+  config: any;
+  request?: any;
+};
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  // Adicione outros campos conforme necessário
+}
+
+interface AuthResponse {
+  user: User;
+  token: string;
+}
+
 const API_URL = 'http://localhost:3001/api/auth'; // Atualize com sua URL da API
 
 // Configuração padrão do axios
@@ -14,7 +35,7 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
-    if (token) {
+    if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
@@ -27,8 +48,8 @@ api.interceptors.request.use(
 // Funções de autenticação
 export const authService = {
   // Login com e-mail e senha
-  async login(email: string, password: string) {
-    const response = await api.post('/login', { email, password });
+  async login(email: string, password: string): Promise<AuthResponse> {
+    const response: AxiosResponse<AuthResponse> = await api.post('/login', { email, password });
     if (response.data.token) {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
@@ -41,8 +62,8 @@ export const authService = {
     name: string;
     email: string;
     password: string;
-  }) {
-    const response = await api.post('/register', userData);
+  }): Promise<AuthResponse> {
+    const response: AxiosResponse<AuthResponse> = await api.post('/register', userData);
     return response.data;
   },
 
@@ -71,9 +92,9 @@ export const authService = {
   },
 
   // Obter usuário atual
-  getCurrentUser() {
+  getCurrentUser(): User | null {
     const userStr = localStorage.getItem('user');
-    return userStr ? JSON.parse(userStr) : null;
+    return userStr ? JSON.parse(userStr) as User : null;
   },
 
   // Verificar se o usuário está autenticado
@@ -83,7 +104,7 @@ export const authService = {
 
   // Atualizar token
   async refreshToken() {
-    const response = await api.post('/refresh-token');
+    const response = await api.post<{ token: string }>('/refresh-token');
     if (response.data.token) {
       localStorage.setItem('token', response.data.token);
     }

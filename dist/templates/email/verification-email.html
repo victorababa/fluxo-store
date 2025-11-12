@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de E-mail - Shopee Gamer</title>
+    <style>
+        /* Estilos base */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f5f5f5;
+        }
+        
+        /* Container principal */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cabeçalho */
+        .email-header {
+            background-color: #0f172a;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #3b82f6;
+        }
+        
+        .email-header img {
+            max-width: 180px;
+            height: auto;
+        }
+        
+        /* Conteúdo */
+        .email-content {
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #0f172a;
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #4b5563;
+        }
+        
+        /* Botão de ação */
+        .btn-verify {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 20px 0;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-verify:hover {
+            background-color: #2563eb;
+        }
+        
+        /* Rodapé */
+        .email-footer {
+            background-color: #f8fafc;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            color: #3b82f6;
+        }
+        
+        .unsubscribe {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 20px;
+        }
+        
+        .unsubscribe a {
+            color: #94a3b8;
+            text-decoration: underline;
+        }
+        
+        /* Responsividade */
+        @media screen and (max-width: 600px) {
+            .email-content {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            p {
+                font-size: 14px;
+            }
+            
+            .btn-verify {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Cabeçalho -->
+        <div class="email-header">
+            <img src="https://your-shopee-gamer-logo.png" alt="Shopee Gamer Logo">
+        </div>
+        
+        <!-- Conteúdo principal -->
+        <div class="email-content">
+            <h1>Verifique seu endereço de e-mail</h1>
+            
+            <p>Olá {{name}},</p>
+            
+            <p>Obrigado por se cadastrar no Shopee Gamer! Para começar a usar sua conta, precisamos verificar seu endereço de e-mail.</p>
+            
+            <p>Clique no botão abaixo para confirmar que este é o seu endereço de e-mail:</p>
+            
+            <div style="text-align: center;">
+                <a href="{{verificationLink}}" class="btn-verify">Verificar E-mail</a>
+            </div>
+            
+            <p>Se você não criou uma conta no Shopee Gamer, pode ignorar esta mensagem.</p>
+            
+            <p>Atenciosamente,<br>Equipe Shopee Gamer</p>
+        </div>
+        
+        <!-- Rodapé -->
+        <div class="email-footer">
+            <div class="social-links">
+                <a href="https://facebook.com/shopee-gamer" target="_blank">Facebook</a>
+                <a href="https://twitter.com/shopee-gamer" target="_blank">Twitter</a>
+                <a href="https://instagram.com/shopee-gamer" target="_blank">Instagram</a>
+            </div>
+            
+            <p>© 2025 Shopee Gamer. Todos os direitos reservados.</p>
+            
+            <div class="unsubscribe">
+                <a href="{{unsubscribeLink}}" target="_blank">Cancelar inscrição</a> | 
+                <a href="{{preferencesLink}}" target="_blank">Preferências de e-mail</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

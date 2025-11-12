@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+// @ts-ignore
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -53,7 +53,7 @@ const HeroCarousel = () => {
         {dots}
       </div>
     ),
-    customPaging: (i: number) => (
+    customPaging: () => (
       <div className="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300"></div>
     ),
   };
@@ -102,12 +102,7 @@ const HeroCarousel = () => {
               }}
             >
               <div className="container mx-auto h-full flex items-center px-4 sm:px-6 lg:px-8">
-                <motion.div 
-                  className="max-w-2xl text-white"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
+                <div className="max-w-2xl mx-auto text-center">
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                     {slide.title}
                   </h2>
@@ -121,7 +116,7 @@ const HeroCarousel = () => {
                     {slide.buttonIcon}
                     {slide.buttonText}
                   </Link>
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>

@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard';
 import { FilterSidebar } from './components/FilterSidebar';
 import { Pagination } from '../../components/Pagination';
 import { useProducts } from '../../hooks/useProducts';
-import { Product } from '../../types';
 
 export function ProductsPage() {
   const [searchParams] = useSearchParams();
